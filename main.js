@@ -23,7 +23,7 @@ function render() {
     <Counter
       value={store.getState().value}
       root={store.getState().root}
-      onIncrementAsync={() => action('INCREMENT_ASYNC')}
+      getRoot={() => action('GET_ROOT')}
       onIncrement={() => action('INCREMENT')}
       onDecrement={() => action('DECREMENT')} />,
     document.getElementById('root')

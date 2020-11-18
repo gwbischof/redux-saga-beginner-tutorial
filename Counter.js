@@ -1,10 +1,10 @@
 /*eslint-disable no-unused-vars */
 import React, { Component, PropTypes } from 'react'
 
-const Counter = ({ value, root, onIncrementAsync, onIncrement, onDecrement }) =>
+const Counter = ({ value, root, getRoot, onIncrement, onDecrement }) =>
       <div>
-        <button onClick={onIncrementAsync}>
-          Increment after 1s.
+        <button onClick={getRoot}>
+          Get the root post.
         </button>
         {' '}
         <button onClick={onIncrement}>

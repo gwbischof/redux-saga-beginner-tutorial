@@ -1,4 +1,5 @@
 import { put, takeEvery, all } from 'redux-saga/effects'
+import axios from "axios";
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
@@ -17,10 +18,14 @@ export function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
 
-
 // Our worker Saga: will perform the async increment task
 export function* getRoot() {
-  yield put({ type: "ROOT" })
+  axios.get(`http://127.0.0.1:8000/root`)
+  .then(res => {
+    const root = res.data;
+  })
+  console.log(root)
+  yield put({ type: "ROOT", root})
 }
 
 // Our watcher Saga: spawn a new incrementAsync task on each INCREMENT_ASYNC
@@ -28,7 +33,6 @@ export function* watchGetRoot() {
   yield takeEvery('GET_ROOT', getRoot)
 }
 
-// notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
   yield all([
