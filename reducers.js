@@ -7,7 +7,7 @@ export default function counter(state = {'value': 0, 'root': "none"}, action) {
       state.value -= 1
       return state
     case 'ROOT':
-      state.root = action
+      state.root = JSON.stringify(action.payload)
       return state
     default:
       return state
